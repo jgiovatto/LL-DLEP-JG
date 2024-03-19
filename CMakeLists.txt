@@ -10,6 +10,9 @@ SET(DLEP_PUBLIC_HDRS DlepInit.h DlepClient.h DlepService.h DlepCommon.h DataItem
 # Enable "all" c++ warnings
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
+#JG, Warning: The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.’
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_BIND_GLOBAL_PLACEHOLDERS")
+
 # By default, treat all warnings as errors
 # Can be disalbed with -DWARNINGS_AS_ERRORS:OFF
 set(WARNINGS_AS_ERRORS ON CACHE BOOL "Treat all warnings as errors")
@@ -109,7 +112,10 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/package/copyright DESTINATION ${DOCDIR
 
 ENABLE_TESTING()
 add_subdirectory(config)
-add_subdirectory(doc)
+# make docs optional
+if(GEN_DOC)
+  add_subdirectory(doc)
+endif()
 add_subdirectory(tests)
 
 # Linux Packaging

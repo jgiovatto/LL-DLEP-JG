@@ -10,6 +10,8 @@
 #ifndef DLEP_CLIENT_IMPL_H
 #define DLEP_CLIENT_IMPL_H
 
+#include <map>
+
 #include "DlepClient.h" // base class
 #include "DlepService.h"
 

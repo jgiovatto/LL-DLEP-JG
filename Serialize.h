@@ -26,6 +26,7 @@
 #include <stdexcept>
 #include <vector>
 #include <type_traits>
+#include <cstdint>
 
 namespace LLDLEP
 {
